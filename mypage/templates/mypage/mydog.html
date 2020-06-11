@@ -2,7 +2,30 @@
 
 {% block content %}
 
-<h1>mydog</h1>
+<h1>마이 반려견</h1>
 
+<form method="POST" action="{% url 'mydog'%}">
+
+    {% csrf_token %}
+
+    반려견 이름:
+    <br>
+    <input name="name" type="text" value="{{doginfo.name}}">
+    <br>
+    품종:
+    <br>
+    <input name="breed" type="text" value="{{doginfo.breed}}">
+    <br>
+    나이:
+    <br>
+    <input name="age" type="text" value="{{doginfo.age}}">
+    <br>
+    몸무게(kg):
+    <br>
+    <input name="weight" type="text" value="{{doginfo.weight}}">
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="입력 완료">
+</form>
 
 {% endblock %}
