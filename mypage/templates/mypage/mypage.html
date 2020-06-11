@@ -4,5 +4,24 @@
 
 <h1>mypage</h1>
 
+<form method="POST" action="{% url 'mypage'%}">
+
+    {% csrf_token %}
+
+    이름:
+    <br>
+    <input name="name" type="text" value="{{userinfo.name}}">
+    <br>
+    이메일:
+    <br>
+    <input name="email" type="text" value="{{userinfo.email}}">
+    <br>
+    휴대폰번호:
+    <br>
+    <input name="phone" type="text" value="{{userinfo.phone}}">
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="입력 완료">
+</form>
 
 {% endblock %}
