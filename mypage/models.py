@@ -7,17 +7,17 @@ class user(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=50, blank=True)
     email = models.EmailField(max_length=254, blank=True)
-    phone = PhoneNumberField()
+    phone = PhoneNumberField(blank=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class dog(models.Model):
     id = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=50, blank=True)
     breed = models.CharField(max_length=50, blank=True)
-    age = models.IntegerField()
-    weight = models.IntegerField()
+    age = models.IntegerField(default=0, blank=True)
+    weight = models.IntegerField(default=0, blank=True)
     
     def __str__(self):
-        return self.id
+        return str(self.id)

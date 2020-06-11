@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
+from django.db.models import Count
 from .models import user, dog
 
 # Create your views here.
 
 def mypage(request):
+    # if first, create new database
+    if user.objects.filter(id=request.user).count() == 0:
+        _user = user(id=request.user)
+        _user.save()
     # get userinfo from queryset
     userinfo = user.objects.get(id=request.user)
     # POST
@@ -16,10 +21,13 @@ def mypage(request):
         return redirect('home')
     # GET
     else:
-        userinfo = user.objects.get(id=request.user)
         return render(request, 'mypage/mypage.html', {'userinfo': userinfo})
 
 def mydog(request):
+    # if first, create new database
+    if dog.objects.filter(id=request.user).count() == 0:
+        _dog = dog(id=request.user)
+        _dog.save()
     # get userinfo from queryset
     doginfo = dog.objects.get(id=request.user)
     # POST
@@ -33,5 +41,4 @@ def mydog(request):
         return redirect('home')
     # GET
     else:
-        doginfo = dog.objects.get(id=request.user)
         return render(request, 'mypage/mydog.html', {'doginfo': doginfo})
