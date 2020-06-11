@@ -13,11 +13,11 @@ class user(models.Model):
         return str(self.id)
 
 class dog(models.Model):
-    id = models.CharField(max_length=50, primary_key=True)
     name = models.CharField(max_length=50, blank=True)
     breed = models.CharField(max_length=50, blank=True)
     age = models.IntegerField(default=0, blank=True)
     weight = models.IntegerField(default=0, blank=True)
+    userid = models.ForeignKey(user, on_delete=models.CASCADE)
     
     def __str__(self):
         return str(self.id)
