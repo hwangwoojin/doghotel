@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # post-installed
     'account.apps.AccountConfig',
     'home.apps.HomeConfig',
+    'mypage.apps.MypageConfig',
     # pre-installed
     'django.contrib.admin',
     'django.contrib.auth',

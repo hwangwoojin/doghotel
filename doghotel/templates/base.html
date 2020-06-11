@@ -31,9 +31,11 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
+                            aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님! </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                            <a class="dropdown-item" href="{% url 'mypage' %}">마이 페이지 </a>
+                            <a class="dropdown-item" href="{% url 'mydog' %}">마이 반려견 </a>
+                            <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">로그아웃 </a>
                             <form id="logout" method="POST" action="{% url 'logout'%}">
                                 {% csrf_token %} <input type="hidden" />
                             </form>
