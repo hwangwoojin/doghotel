@@ -23,11 +23,7 @@ def mypage(request):
     else:
         return render(request, 'mypage/mypage.html', {'userinfo': userinfo})
 
-def mydog(request):
-    # if first, create new database
-    if dog.objects.filter(id=request.user).count() == 0:
-        _dog = dog(id=request.user)
-        _dog.save()
+def mydogAdd(request):
     # get userinfo from queryset
     doginfo = dog.objects.get(id=request.user)
     # POST
@@ -41,4 +37,13 @@ def mydog(request):
         return redirect('home')
     # GET
     else:
-        return render(request, 'mypage/mydog.html', {'doginfo': doginfo})
+        return render(request, 'mypage/mydogAdd.html', {'doginfo': doginfo})
+
+def mydog(request):
+    # if first, create new database
+    if dog.objects.filter(id=request.user).count() == 0:
+        _dog = dog(id=request.user)
+        _dog.save()
+    # doglist
+    doginfo = dog.objects.get(id=request.user)
+    return render(request, 'mypage/mydog.html', {'doginfo': doginfo})

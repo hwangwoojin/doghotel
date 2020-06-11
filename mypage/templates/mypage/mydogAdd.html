@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>마이 반려견</h1>
+
+<form method="POST" action="{% url 'mydogAdd' %}">
+
+    {% csrf_token %}
+
+    반려견 이름:
+    <br>
+    <input name="name" type="text" value="">
+    <br>
+    품종:
+    <br>
+    <input name="breed" type="text" value="">
+    <br>
+    나이:
+    <br>
+    <input name="age" type="text" value="">
+    <br>
+    몸무게(kg):
+    <br>
+    <input name="weight" type="text" value="">
+    <br>
+    <br>
+    <input class="btn btn-primary" type="submit" value="반려견 추가하기">
+</form>
+
+{% endblock %}
