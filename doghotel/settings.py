@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'home.apps.HomeConfig',
     'mypage.apps.MypageConfig',
+    # django-phonenumber-field
+    # https://pypi.org/project/django-phonenumber-field/
+    'phonenumber_field',
     # pre-installed
     'django.contrib.admin',
     'django.contrib.auth',
