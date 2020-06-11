@@ -4,19 +4,22 @@
 
 <h1>마이 반려견</h1>
 
-{{doginfo}}
-
 {% for dog in doginfo.all %}
-    <div class="container">
-        <h1>{{ dog.name }}</h1>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{dog.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{dog.breed}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{dog.age}} 살</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{dog.weight}} kg</h6>
+            <p class="card-text">{{dog.feature}}</p>
     </div>
+</div>
 {% endfor %}
 
+<br>
 
 <form method="GET" action="{% url 'mydogAdd' %}">
     <input class="btn btn-primary" type="submit" value="반려견 추가하기">
 </form>
-
-
 
 {% endblock %}

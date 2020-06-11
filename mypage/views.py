@@ -23,27 +23,26 @@ def mypage(request):
     else:
         return render(request, 'mypage/mypage.html', {'userinfo': userinfo})
 
+def mydog(request):
+    # doglist
+    doginfo = dog.objects.filter(userid=str(request.user))
+    return render(request, 'mypage/mydog.html', {'doginfo': doginfo})
+
 def mydogAdd(request):
-    # get userinfo from queryset
-    doginfo = dog.objects.get(id=request.user)
     # POST
     if request.method == 'POST':
-        # update database
-        doginfo.name = request.POST['name']
-        doginfo.breed = request.POST['breed']
-        doginfo.age = request.POST['age']
-        doginfo.weight = request.POST['weight']
-        doginfo.save()
-        return redirect('home')
+        # insert database
+        _dog = dog()
+        _dog.userid = str(request.user)
+        _dog.name = request.POST['name']
+        _dog.breed = request.POST['breed']
+        _dog.age = request.POST['age']
+        _dog.weight = request.POST['weight']
+        _dog.feature= request.POST['feature']
+        _dog.save()
+        return redirect('mydog')
     # GET
     else:
+        # get userinfo from queryset
+        doginfo = dog.objects.filter(userid=str(request.user))
         return render(request, 'mypage/mydogAdd.html', {'doginfo': doginfo})
-
-def mydog(request):
-    # if first, create new database
-    if dog.objects.filter(id=request.user).count() == 0:
-        _dog = dog(id=request.user)
-        _dog.save()
-    # doglist
-    doginfo = dog.objects.get(id=request.user)
-    return render(request, 'mypage/mydog.html', {'doginfo': doginfo})

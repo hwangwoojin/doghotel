@@ -17,7 +17,8 @@ class dog(models.Model):
     breed = models.CharField(max_length=50, blank=True)
     age = models.IntegerField(default=0, blank=True)
     weight = models.IntegerField(default=0, blank=True)
-    userid = models.ForeignKey(user, on_delete=models.CASCADE)
+    feature = models.CharField(max_length=140, blank=True)
+    userid = models.CharField(max_length=50)
     
     def __str__(self):
-        return str(self.id)
+        return str(self.userid)
