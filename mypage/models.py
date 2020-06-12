@@ -33,3 +33,7 @@ class hotels(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+class reservation(models.Model):
+    managerid = models.CharField(max_length=50)
+    userid = models.CharField(max_length=50)

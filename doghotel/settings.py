@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # post-installed
     'account.apps.AccountConfig',
-    'home.apps.HomeConfig',
     'mypage.apps.MypageConfig',
     # django-phonenumber-field
     # https://pypi.org/project/django-phonenumber-field/
