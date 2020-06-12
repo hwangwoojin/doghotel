@@ -35,6 +35,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{% url 'mypage' %}">마이 페이지 </a>
                             <a class="dropdown-item" href="{% url 'mydog' %}">마이 반려견 </a>
+                            <a class="dropdown-item" href="{% url 'reservation' %}">마이 예약 </a>
                             <a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">로그아웃 </a>
                             <form id="logout" method="POST" action="{% url 'logout'%}">
                                 {% csrf_token %} <input type="hidden" />

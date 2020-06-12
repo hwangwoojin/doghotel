@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>내가 한 예약</h1>
+
+{% for hotel in hotelinfo %}
+    <div class="card" style="width: 100%">
+        <div class="card-body">
+            <h4 class="card-title" style="float:left">{{hotel.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:right">{{hotel.homepage}}</h6>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:right">{{hotel.phone}}</h6>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:left">{{hotel.location}}</h6>
+            <br>
+            <h5 class="card-text" style="float:left">별 {{hotel.rate}} 개</p>
+        </div>
+    </div>
+{% endfor %}
+
+<br>
+
+<h1>나의 시설 예약</h1>
+
+{% for user in userinfo %}
+    <div class="card" style="width: 100%">
+        <div class="card-body">
+            <h4 class="card-title" style="float:left">{{user.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:right">{{user.name}}</h6>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:right">{{user.email}}</h6>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:left">{{user.phone}}</h6>
+        </div>
+        {% for dog in doginfo %}
+                {% if user.id == dog.userid %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{dog.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{dog.breed}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{dog.age}} 살</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{dog.weight}} kg</h6>
+                        <p class="card-text">{{dog.feature}}</p>
+                    </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <br>
+
+{% endfor %}
+
+{% endblock %}

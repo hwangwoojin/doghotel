@@ -83,8 +83,27 @@ def hotelLocationSearch(request):
     return render(request, 'hotel/hotel.html', {'hotelinfo': hotelinfo})
 
 def reservation(request):
-    _reservation = reservations()
-    _reservation.managerid = request.POST['userid']
-    _reservation.userid = str(request.user)
-    _reservation.save()
-    return redirect('hotel')
+    # POST
+    if request.method == 'POST':
+        _reservation = reservations()
+        _reservation.managerid = request.POST['userid']
+        _reservation.userid = str(request.user)
+        _reservation.save()
+        return redirect('hotel')
+    # GET
+    else:
+        # 내가 한 예약 (호텔 정보를 보여줌)
+        reservation = reservations.objects.filter(userid=str(request.user))
+        hotelinfo = list()
+        for reserve in reservation:
+            hotelinfo += hotels.objects.filter(userid=str(reserve.managerid))
+        # 나의 시설 예약 (사용자 및 강아지 정보를 보여줌)
+        reservation = reservations.objects.filter(managerid=str(request.user))
+        userinfo = list()
+        doginfo = list()
+        for reserve in reservation:
+            # 사용자 정보
+            userinfo += user.objects.filter(id=str(reserve.userid))
+            # 강아지 정보
+            doginfo += dog.objects.filter(userid=str(reserve.userid))
+        return render(request, 'mypage/myreservation.html', {'hotelinfo': hotelinfo, 'userinfo': userinfo, 'doginfo': doginfo})
