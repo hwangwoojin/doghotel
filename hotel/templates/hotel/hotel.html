@@ -2,6 +2,22 @@
 
 {% block content %}
 
-<h1>hotel</h1>
+{% for hotel in hotel.all %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{hotel.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{hotel.location}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{hotel.homepage}} 살</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{hotel.phone}} kg</h6>
+            <p class="card-text">{{hotel.rate}}</p>
+    </div>
+</div>
+{% endfor %}
+
+<br>
+
+<form method="GET" action="{% url 'mydogAdd' %}">
+    <input class="btn btn-primary" type="submit" value="반려견 추가하기">
+</form>
 
 {% endblock %}

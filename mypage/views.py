@@ -44,5 +44,4 @@ def mydogAdd(request):
     # GET
     else:
         # get userinfo from queryset
-        doginfo = dog.objects.filter(userid=str(request.user))
-        return render(request, 'mypage/mydogAdd.html', {'doginfo': doginfo})
+        return render(request, 'mypage/mydogAdd.html')
