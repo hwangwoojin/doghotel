@@ -1,5 +1,6 @@
 # doghotel
 
+:smiley:
 django 과 sqlite 를 사용해서 만든 애견 호텔 예약 사이트입니다.
 
 ![logo.png](./doghotel/static/logo.png)
