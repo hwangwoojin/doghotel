@@ -23,5 +23,4 @@ urlpatterns = [
     path('', include('home.urls')),
     path('account/', include('account.urls')),
     path('mypage/', include('mypage.urls')),
-    path('hotel/', include('hotel.urls')),
 ]

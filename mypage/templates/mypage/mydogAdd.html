@@ -7,7 +7,6 @@
 <form method="POST" action="{% url 'mydogAdd' %}">
 
     {% csrf_token %}
-
     반려견 이름:
     <br>
     <input name="name" type="text" value="" style="width:50%">

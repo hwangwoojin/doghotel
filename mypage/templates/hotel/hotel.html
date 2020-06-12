@@ -28,12 +28,22 @@
 {% for hotel in hotelinfo.all %}
     <div class="card" style="width: 100%">
         <div class="card-body">
-            <h5 class="card-title">{{hotel.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{hotel.location}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">{{hotel.homepage}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">{{hotel.phone}}</h6>
-            <p class="card-text">별 {{hotel.rate}} 개</p>
+            <h4 class="card-title" style="float:left">{{hotel.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:right">{{hotel.homepage}}</h6>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:right">{{hotel.phone}}</h6>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted" style="float:left">{{hotel.location}}</h6>
+            <br>
+            <h5 class="card-text" style="float:left">별 {{hotel.rate}} 개</p>
         </div>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'hotel' %}" style="float:right">
+            {% csrf_token %}
+            <input name="name" type="text" value="{{ hotel.userid }}" style="display:none">
+            <input class="btn btn-primary" type="submit" value="예약하기" style="float:right">
+        </form>
+        {% endif %}
     </div>
     <br>
 {% endfor %}

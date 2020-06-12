@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'home.apps.HomeConfig',
     'mypage.apps.MypageConfig',
-    'hotel.apps.HotelConfig',
     # django-phonenumber-field
     # https://pypi.org/project/django-phonenumber-field/
     'phonenumber_field',
