@@ -16,7 +16,7 @@
     <body style="background-color: #F3F3F3; font-family: 'Jua', sans-serif;">
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F0C80E">
-            <a class="navbar-brand" href="{% url 'home' %}">
+            <a class="navbar-brand" href="{% url 'hotel' %}">
                 <!-- logo image -->
                 <img src="{% static 'logo.png' %}" height="50" alt="" loading="lazy">
             </a>
@@ -25,10 +25,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'hotelAdd' %}">나의 시설 등록하기 </a>
                     </li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님! </a>

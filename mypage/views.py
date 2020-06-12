@@ -18,7 +18,7 @@ def mypage(request):
         userinfo.email = request.POST['email']
         userinfo.phone = request.POST['phone']
         userinfo.save()
-        return redirect('home')
+        return redirect('hotel')
     # GET
     else:
         return render(request, 'mypage/mypage.html', {'userinfo': userinfo})

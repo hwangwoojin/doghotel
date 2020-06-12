@@ -14,7 +14,7 @@ def signup(request):
                 user = User.objects.create_user(
                     request.POST['username'], password=request.POST['password1'])
                 auth.login(request, user)
-                return redirect('home')
+                return redirect('hotel')
         else:
             return render(request, 'account/signup.html', {'error': '비밀번호가 일치하지 않습니다.'})
     else:
@@ -28,7 +28,7 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            return redirect('hotel')
         else:
             return render(request, 'account/login.html', {'error': '계정 또는 비밀번호가 올바르지 않습니다.'})
     else:
@@ -37,5 +37,5 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        return redirect('home')
+        return redirect('hotel')
     return render(request, 'account/signup.html')
