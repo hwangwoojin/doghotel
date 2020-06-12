@@ -24,3 +24,17 @@ def hotelAdd(request):
     else:
         # get userinfo from queryset
         return render(request, 'hotel/hotelAdd.html')
+
+def hotelRate(request):
+    hotelinfo = hotels.objects.all().order_by('-rate')
+    return render(request, 'hotel/hotel.html', {'hotelinfo': hotelinfo})
+
+def hotelNameSearch(request):
+    _name = request.POST['name']
+    hotelinfo = hotels.objects.filter(name__contains=str(_name))
+    return render(request, 'hotel/hotel.html', {'hotelinfo': hotelinfo})
+
+def hotelLocationSearch(request):
+    _location = request.POST['location']
+    hotelinfo = hotels.objects.filter(location__contains=str(_location))
+    return render(request, 'hotel/hotel.html', {'hotelinfo': hotelinfo})

@@ -2,16 +2,40 @@
 
 {% block content %}
 
+<h1>애견 호텔 목록</h1>
+
+<form method="GET" action="{% url 'hotelRate' %}">
+    <input class="btn btn-primary" type="submit" value="평점순" style="float:right">
+</form>
+
+<form method="POST" action="{% url 'hotelNameSearch' %}">
+    {% csrf_token %}
+    <input name="name" type="text" value="" style="float:center">
+    <input class="btn btn-primary" type="submit" value="이름으로 검색하기" style="float:center">
+</form>
+
+<br>
+
+<form method="POST" action="{% url 'hotelLocationSearch' %}">
+    {% csrf_token %}
+    <input name="location" type="text" value="" style="float:center;">
+    <input class="btn btn-primary" type="submit" value="위치로 검색하기" style="float:center">
+</form>
+
+<br>
+<br>
+
 {% for hotel in hotelinfo.all %}
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 100%">
         <div class="card-body">
             <h5 class="card-title">{{hotel.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{hotel.location}}</h6>
             <h6 class="card-subtitle mb-2 text-muted">{{hotel.homepage}}</h6>
             <h6 class="card-subtitle mb-2 text-muted">{{hotel.phone}}</h6>
             <p class="card-text">별 {{hotel.rate}} 개</p>
+        </div>
     </div>
-</div>
+    <br>
 {% endfor %}
 
 {% endblock %}
