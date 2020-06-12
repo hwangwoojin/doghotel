@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
-from .models import user, dog, hotels
+from .models import user, dog, hotels, reservations
 
 # Create your views here.
 
@@ -81,3 +81,10 @@ def hotelLocationSearch(request):
     _location = request.POST['location']
     hotelinfo = hotels.objects.filter(location__contains=str(_location))
     return render(request, 'hotel/hotel.html', {'hotelinfo': hotelinfo})
+
+def reservation(request):
+    _reservation = reservations()
+    _reservation.managerid = request.POST['userid']
+    _reservation.userid = str(request.user)
+    _reservation.save()
+    return redirect('hotel')

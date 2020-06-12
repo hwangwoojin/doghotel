@@ -38,9 +38,9 @@
             <h5 class="card-text" style="float:left">별 {{hotel.rate}} 개</p>
         </div>
         {% if user.is_authenticated %}
-        <form method="POST" action="{% url 'hotel' %}" style="float:right">
+        <form method="POST" action="{% url 'reservation' %}" style="float:right">
             {% csrf_token %}
-            <input name="name" type="text" value="{{ hotel.userid }}" style="display:none">
+            <input name="userid" type="text" value="{{ hotel.userid }}" style="display:none">
             <input class="btn btn-primary" type="submit" value="예약하기" style="float:right">
         </form>
         {% endif %}
